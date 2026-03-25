@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Market Intel Configuration",
+  "description": "User configuration for the market-intel skill. Stored at ~/.market-intel/config.json",
+  "type": "object",
+  "required": ["company", "industry", "categories", "schedule", "distribution"],
+  "properties": {
+    "company": {
+      "type": "object",
+      "description": "Your company context — used to generate 'so what' implications",
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string", "description": "Company name (e.g., 'Tesla')" },
+        "description": { "type": "string", "description": "One-sentence: what you do and who you sell to" },
+        "audience": { "type": "string", "description": "Who reads this briefing (e.g., 'Strategy leaders')" },
+        "decisions": { "type": "string", "description": "What decisions readers make (e.g., 'Portfolio investment decisions')" }
+      }
+    },
+    "industry": {
+      "type": "object",
+      "required": ["focus"],
+      "properties": {
+        "focus": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Industry/product focus areas (e.g., ['automotive connectors', 'EV charging'])"
+        },
+        "geography": {
+          "type": "string",
+          "default": "global",
+          "description": "Geographic focus (e.g., 'North America', 'Europe', 'global')"
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "description": "News categories to monitor. Each gets its own section in the briefing.",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string", "description": "Category display name" },
+          "description": { "type": "string", "description": "What this category covers" },
+          "searchHints": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Additional search terms for this category"
+          },
+          "enabled": { "type": "boolean", "default": true }
+        }
+      },
+      "default": [
+        { "name": "Market Trends", "description": "Customer/OEM moves, platform announcements, production decisions", "searchHints": ["OEM", "platform", "production", "launch", "demand"] },
+        { "name": "Technology", "description": "Product innovation, technical standards, new capabilities", "searchHints": ["technology", "innovation", "product launch", "standard", "R&D"] },
+        { "name": "Customers", "description": "Customer announcements, design wins, partnerships", "searchHints": ["customer", "design win", "partnership", "contract", "award"] },
+        { "name": "Competitors", "description": "Competitor moves, acquisitions, product launches", "searchHints": ["acquisition", "partnership", "expansion", "product launch"] },
+        { "name": "Regulatory", "description": "Regulations, standards changes, compliance deadlines", "searchHints": ["regulation", "standard", "compliance", "policy", "mandate"] },
+        { "name": "Supply Chain & M&A", "description": "Supply chain shifts, mergers, acquisitions, reshoring", "searchHints": ["supply chain", "M&A", "acquisition", "reshoring", "consolidation"] }
+      ]
+    },
+    "competitors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Specific competitors to watch",
+      "default": []
+    },
+    "sources": {
+      "type": "object",
+      "properties": {
+        "curated": {
+          "type": "array",
+          "description": "Specific news sources to always check",
+          "items": {
+            "type": "object",
+            "required": ["url", "name"],
+            "properties": {
+              "url": { "type": "string", "description": "Source URL" },
+              "name": { "type": "string", "description": "Display name" },
+              "requiresAuth": { "type": "boolean", "default": false },
+              "notes": { "type": "string", "description": "Notes about access requirements" }
+            }
+          },
+          "default": []
+        },
+        "preferredDomains": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Domains to prefer in search results (e.g., ['reuters.com', 'bloomberg.com'])",
+          "default": []
+        },
+        "lowConfidenceDomains": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Domains to tag as [Low confidence]",
+          "default": []
+        }
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "properties": {
+        "frequency": { "type": "string", "enum": ["daily", "weekly"], "default": "weekly" },
+        "time": { "type": "string", "default": "08:00", "description": "HH:MM in 24-hour format" },
+        "timezone": { "type": "string", "default": "America/New_York" },
+        "weeklyDay": { "type": "string", "enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"], "default": "monday" }
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "required": ["author", "method"],
+      "properties": {
+        "method": { "type": "string", "enum": ["gmail-draft", "local-file", "both"], "default": "gmail-draft" },
+        "author": { "type": "string", "description": "Author email (receives dry-run editions)" },
+        "recipients": { "type": "array", "items": { "type": "string" }, "default": [] },
+        "outputDir": { "type": "string", "description": "Directory for local file output", "default": "~/Documents/market-intel/" }
+      }
+    },
+    "briefingTitle": {
+      "type": "string",
+      "default": "Industry Intelligence Briefing",
+      "description": "Custom subject line prefix"
+    },
+    "tone": {
+      "type": "string",
+      "enum": ["internal-memo", "executive-brief", "analyst-note"],
+      "default": "internal-memo"
+    },
+    "driveSearch": {
+      "type": "object",
+      "description": "Optional Google Drive integration for internal context",
+      "properties": {
+        "enabled": { "type": "boolean", "default": false },
+        "folderIds": { "type": "array", "items": { "type": "string" } },
+        "keywords": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "onboardingComplete": { "type": "boolean", "default": false }
+  }
+}

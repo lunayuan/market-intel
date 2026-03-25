@@ -1,0 +1,50 @@
+{
+  "company": {
+    "name": "Tesla",
+    "description": "Designs and manufactures electric vehicles, energy storage systems, and solar products. Vertically integrated from battery cells to vehicle software.",
+    "audience": "Product strategy and business development leadership",
+    "decisions": "Vehicle program prioritization, market entry timing, supply chain sourcing, technology build-vs-buy, competitive positioning"
+  },
+  "industry": {
+    "focus": ["electric vehicles", "battery technology", "autonomous driving", "EV charging infrastructure", "energy storage"],
+    "geography": "global"
+  },
+  "categories": [
+    { "name": "Competitor Vehicles", "description": "New EV launches, platform announcements, pricing moves from rival OEMs", "searchHints": ["EV launch", "electric vehicle", "platform", "pricing", "production ramp"] },
+    { "name": "Battery & Supply Chain", "description": "Battery cell chemistry, raw materials, gigafactory builds, supplier moves", "searchHints": ["lithium", "battery cell", "cathode", "gigafactory", "CATL", "LG Energy", "supply chain"] },
+    { "name": "Autonomous Driving", "description": "Self-driving regulation, robotaxi deployments, ADAS competition", "searchHints": ["autonomous driving", "self-driving", "robotaxi", "Waymo", "Level 3", "Level 4", "FSD"] },
+    { "name": "Charging & Infrastructure", "description": "Charging network expansion, standards (NACS/CCS), grid integration", "searchHints": ["EV charging", "NACS", "CCS", "charging network", "fast charging", "grid"] },
+    { "name": "Regulatory & Policy", "description": "EV mandates, emissions standards, tariffs, subsidies", "searchHints": ["EV mandate", "emissions regulation", "IRA", "EV subsidy", "tariff", "trade policy"] },
+    { "name": "Energy & Storage", "description": "Utility-scale storage, virtual power plants, solar market", "searchHints": ["energy storage", "Megapack", "virtual power plant", "solar", "grid storage"] }
+  ],
+  "competitors": ["BYD", "Rivian", "Lucid", "Hyundai/Kia", "Ford", "GM", "Volkswagen Group", "BMW", "Mercedes-Benz", "Xiaomi"],
+  "sources": {
+    "curated": [
+      { "url": "https://electrek.co", "name": "Electrek", "requiresAuth": false },
+      { "url": "https://insideevs.com", "name": "InsideEVs", "requiresAuth": false },
+      { "url": "https://www.bloomberg.com/green", "name": "Bloomberg Green", "requiresAuth": true, "notes": "Requires Bloomberg subscription" }
+    ],
+    "preferredDomains": ["reuters.com", "bloomberg.com", "electrek.co", "insideevs.com", "spglobal.com"],
+    "lowConfidenceDomains": ["teslarati.com", "tesmanian.com"]
+  },
+  "schedule": {
+    "frequency": "weekly",
+    "time": "07:00",
+    "timezone": "America/Los_Angeles",
+    "weeklyDay": "monday"
+  },
+  "distribution": {
+    "method": "both",
+    "author": "user@tesla.com",
+    "recipients": [],
+    "outputDir": "~/Documents/market-intel/"
+  },
+  "briefingTitle": "Tesla EV & Energy Intelligence",
+  "tone": "internal-memo",
+  "driveSearch": {
+    "enabled": false,
+    "folderIds": [],
+    "keywords": []
+  },
+  "onboardingComplete": true
+}
