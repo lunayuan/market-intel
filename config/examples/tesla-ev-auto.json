@@ -39,7 +39,7 @@
     "recipients": [],
     "outputDir": "~/Documents/market-intel/"
   },
-  "briefingTitle": "Tesla EV & Energy Intelligence",
+  "briefingTitle": "Market Intelligence for Tesla",
   "tone": "internal-memo",
   "driveSearch": {
     "enabled": false,

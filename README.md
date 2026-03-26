@@ -21,7 +21,7 @@ Delivered as a Gmail draft you review before sending, or a local HTML file you c
 
 1. Install the skill:
    ```bash
-   git clone https://github.com/lunayuan/market-intel.git ~/.claude/skills/market-intel
+   mkdir -p ~/.claude/skills && git clone https://github.com/lunayuan/market-intel.git ~/.claude/skills/market-intel
    ```
 
 2. In Claude Code, say **"set up market intel"** or type `/market-intel`.
